@@ -1,0 +1,84 @@
+﻿<h2>View All Jobs</h2>
+
+
+<div class="container devTable" *ngIf="developerJobs && developerJobs.length > 0">
+
+
+    <div class="row">
+
+        <table class="table  table-hover table-striped table-bordered">
+
+            <thead>
+               <tr>
+                   <td>job Added Date</td>
+                   <th>Job Title</th>
+                   <th>Company Name</th>
+                   <th>Company Address</th>
+                   <th>Salary Range</th>
+                   <th>Job type</th>
+                   <th>Industry</th>
+                   <th>Company Type</th>
+                   <th>Experience Level</th>
+                   <th>Company Size</th>
+                   <th>Actions</th>
+               </tr>
+            </thead>
+
+            <tbody>
+
+                <tr *ngFor="let developerjob of developerJobs">
+                    <td>{{developerjob.createdDate | timesince}}
+                    
+                    </td>
+                    <td>{{developerjob.jobTitle}} 
+                    
+                        <span 
+                              *ngIf="developerjob.isNewJob" 
+                              class="glyphicon-bell">New Job!</span></td>
+                    <td>{{developerjob.companyName}}</td>
+                    <td>
+                    
+                        <span>{{developerjob.companyAddress.address1}} {{developerjob.companyAddress.address1}}</span>
+                        <div>
+                            <span>{{developerjob.companyAddress.city}}</span>
+                            <span>{{developerjob.companyAddress.state}}</span>
+                            <span>{{developerjob.companyAddress.zipCode}}</span>
+                        </div>
+                        
+                        
+                        <div>
+                            <span>{{developerjob.companyName.countryName}}</span>
+                        </div>
+                    
+                    </td>
+                    <td>{{developerjob.salaryRange}}</td>
+                    <td>{{developerjob.jobTypeName}}</td>
+                    <td>{{developerjob.industryName}}</td>
+                  
+                    <td>{{developerjob.companyTypName}}</td>
+                    <td>{{developerjob.experienceLevel}}</td>
+                    
+                    <td>{{developerjob.companySize}}</td>
+                    
+                    <td>
+
+                       
+                        <span><button class="btn btn-primary devViewJobEditButton" >Edit job</button></span>
+                        <span><button class="btn btn-danger devViewJobEditButton"
+                                      
+                                      (click)="deleteDeveloperJob(developerjob.developerJobId)"
+                                      
+                                      >Delete job</button></span>
+                        <span><button class="btn btn-link devViewJobEditButton">View Job Details</button></span>
+                        
+                        
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
